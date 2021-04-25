@@ -55,8 +55,8 @@ function getWeather($areacode, $thearea) {
 	$curl = file_get_contents_curl($data);
 	$decode = json_decode($curl);
 
-	$weather = $decode->RegionalFcst->FcstPeriods->Period{0};
-	$output .= "<h2>".$thearea."</h2>";
+	$weather = $decode->RegionalFcst->FcstPeriods->Period[0];
+	$output = "<h2>".$thearea."</h2>";
 	$timestamp = strtotime($decode->RegionalFcst->issuedAt);
 	$output .= "<h4>Issued at: ".date('d/m/y hi', $timestamp)."</h4>";
 	
@@ -88,4 +88,3 @@ return $output;
 
 
 
-?>
